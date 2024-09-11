@@ -1,0 +1,31 @@
+
+name: Dynamic Package Installation
+
+on:
+  workflow_dispatch:
+    inputs:
+      install_command:
+        description: 'Command to install the package'
+        required: true
+        default: 'npm install'
+
+jobs:
+  build-and-install:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run dynamic install command
+      run: ${{ github.event.inputs.install_command }}
+
+    - name: Build project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+    

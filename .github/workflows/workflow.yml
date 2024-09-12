@@ -14,12 +14,12 @@ jobs:
     - name: Simular instalación
       run: |
         echo "Instalando dependencias..."
-        sleep 2  # Simula un proceso de instalación
+        sleep 20  # Simula un proceso de instalación
 
     - name: Simular limpieza de basura
       run: |
         echo "Limpieza de archivos temporales..."
-        sleep 1  # Simula un proceso de limpieza
+        sleep 10  # Simula un proceso de limpieza
 
     - name: Despedida
       run: echo "Adiós, el workflow ha terminado"
